@@ -19,8 +19,8 @@
                 <ul class="list-group col-sm-6" id="linkliste">
                     <li class="list-group-item d-flex justify-content-between align-items-center" v-for="link in links">
                         <a :href="link.href" target="_blank"
-                            class="stretched-link font-weight-light text-decoration-none">{{ link.text }}</a>
-                        <span class="badge badge-primary badge-pill">{{ link.clicks }}</span>
+                            class="font-weight-light text-decoration-none">{{ link.text }}</a>
+                        <button class="btn badge badge-primary badge-pill" @click="addclick">{{ link.clicks }}</button>
                     </li>
                 </ul>
             </div>
@@ -59,6 +59,14 @@
                             clicks: 0
                         }
                     ]
+                },
+                methods: {
+                    addclick: function(e) {
+                        // e.stopPropagation();
+                        linkhref = e.target.previousSibling.previousSibling.attributes.href.value;
+                        clickedlink = this.links.find(link => link.href === linkhref);
+                        clickedlink++;
+                    }
                 }
             });
         </script>
