@@ -17,9 +17,10 @@
             <h1 class="h1">Linkverwaltung</h1>
             <div class="row">
                 <ul class="list-group col-sm-6" id="linkliste">
-                    <li class="list-group-item" v-for="link in links">
+                    <li class="list-group-item d-flex justify-content-between align-items-center" v-for="link in links">
                         <a :href="link.href" target="_blank"
                             class="stretched-link font-weight-light text-decoration-none">{{ link.text }}</a>
+                        <span class="badge badge-primary badge-pill">{{ link.votes }}</span>
                     </li>
                 </ul>
             </div>
@@ -38,19 +39,24 @@
                     links: [
                         {
                             href: "http://www.kohnlehome.de",
-                            text: "kohnlehome"
+                            text: "kohnlehome",
+                            votes: 0
                         }, {
                             href: "https://meisterk.github.io/linkverwaltung/",
-                            text: "meisterk -> Linkverwaltung"
+                            text: "meisterk -> Linkverwaltung",
+                            votes: 0
                         }, {
                             href: "https://www.google.de",
-                            text: "Google"
+                            text: "Google",
+                            votes: 0
                         }, {
                             href: "https://stackoverflow.com/",
-                            text: "stackoverflow"
+                            text: "stackoverflow",
+                            votes: 0
                         }, {
                             href: "https://www.youtube.com/c/DailyDoseOfInternet",
-                            text: "DailyDoseOfInternet"
+                            text: "DailyDoseOfInternet",
+                            votes: 0
                         }
                     ]
                 }
