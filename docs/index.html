@@ -20,7 +20,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center" v-for="link in links">
                         <a :href="link.href" target="_blank"
                             class="stretched-link font-weight-light text-decoration-none">{{ link.text }}</a>
-                        <span class="badge badge-primary badge-pill">{{ link.votes }}</span>
+                        <span class="badge badge-primary badge-pill">{{ link.clicks }}</span>
                     </li>
                 </ul>
             </div>
@@ -40,23 +40,23 @@
                         {
                             href: "http://www.kohnlehome.de",
                             text: "kohnlehome",
-                            votes: 0
+                            clicks: 0
                         }, {
                             href: "https://meisterk.github.io/linkverwaltung/",
                             text: "meisterk -> Linkverwaltung",
-                            votes: 0
+                            clicks: 0
                         }, {
                             href: "https://www.google.de",
                             text: "Google",
-                            votes: 0
+                            clicks: 0
                         }, {
                             href: "https://stackoverflow.com/",
                             text: "stackoverflow",
-                            votes: 0
+                            clicks: 0
                         }, {
                             href: "https://www.youtube.com/c/DailyDoseOfInternet",
                             text: "DailyDoseOfInternet",
-                            votes: 0
+                            clicks: 0
                         }
                     ]
                 }
