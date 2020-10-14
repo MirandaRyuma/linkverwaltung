@@ -102,6 +102,8 @@
                         );
                     },
                     addnewlink: function() {
+                        if(this.newlinkhref === '' || this.newlinktext === '')
+                            return alert("Beides muss gesetzt sein!");
                         let newlink = {
                             href: this.newlinkhref,
                             text: this.newlinktext,
