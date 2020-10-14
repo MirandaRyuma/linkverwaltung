@@ -22,10 +22,10 @@
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="container" id="linkliste">
             <h1 class="h1">Linkverwaltung</h1>
             <div class="row">
-                <ul class="list-group col-sm-6" id="linkliste">
+                <ul class="list-group col-sm-6">
                     <li class="list-group-item d-flex justify-content-between align-items-center" v-for="link in links">
                         <a :href="link.href" target="_blank"
                             class="stretched-link font-weight-light text-decoration-none">{{ link.text }}</a>
@@ -44,7 +44,7 @@
                         <input type="text" name="href" v-model="newlink.href" placeholder="Die URL" class="form-control"/>
                     </div>
                     <div class="form-group form-check">
-                        <button type="submit" class="stretched-link btn btn-primary" @click="addnewlink">Speichern</button>
+                        <button type="button" class="stretched-link btn btn-primary" @click="addnewlink">Speichern</button>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                         );
                     },
                     addnewlink: function() {
-                        console.log(this.newlink.href);
+                        this.links.push(this.newlink);
                     }
                 },
                 mounted() {
