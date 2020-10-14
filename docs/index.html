@@ -38,10 +38,10 @@
                 <h3 class="h3">Hier kann ein neuer Link hinzugefügt werden.</h3>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <input type="text" name="text" v-model="newlink.text" placeholder="Text zum Anzeigen" class="form-control"/>
+                        <input type="text" name="text" v-model="newlinktext" placeholder="Text zum Anzeigen" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="href" v-model="newlink.href" placeholder="Die URL" class="form-control"/>
+                        <input type="text" name="href" v-model="newlinkhref" placeholder="Die URL" class="form-control"/>
                     </div>
                     <div class="form-group form-check">
                         <button type="button" class="stretched-link btn btn-primary" @click="addnewlink">Speichern</button>
@@ -83,11 +83,8 @@
                             clicks: 0
                         }
                     ],
-                    newlink: {
-                        href: "",
-                        text: "",
-                        clicks: 0
-                    }
+                    newlinkhref: "",
+                    newlinktext: ""
                 },
                 methods: {
                     addclick: function(e) {
@@ -105,7 +102,12 @@
                         );
                     },
                     addnewlink: function() {
-                        this.links.push(this.newlink);
+                        let newlink = {
+                            href: this.newlinkhref,
+                            text: this.newlinktext,
+                            clicks: 0
+                        };
+                        this.links.push(newlink);
                     }
                 },
                 mounted() {
