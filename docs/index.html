@@ -71,7 +71,18 @@
                         linkhref = e.target.previousSibling.previousSibling.attributes.href.value;
                         clickedlink = this.links.find(link => link.href === linkhref);
                         clickedlink.clicks++;
+                        this.sortieren();
+                    },
+                    sortieren: function() {
+                        this.links.sort(
+                            function (link1, link2) {
+                                return link2.clicks - link1.clicks;
+                            }
+                        );
                     }
+                },
+                mounted() {
+                    this.sortieren();
                 }
             });
         </script>
