@@ -22,7 +22,7 @@
         </style>
     </head>
     <body>
-        <div class="container" id="linkliste">
+        <div class="container" id="linkverwaltung">
             <h1 class="h1">Linkverwaltung</h1>
             <div class="row">
                 <ul class="list-group col-sm-6">
@@ -57,39 +57,40 @@
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/vue@next"></script>
         <script>
-            const linkliste = new Vue({
-                el: "#linkliste",
-                data: {
-                    links: [
-                        {
-                            href: "http://www.kohnlehome.de",
-                            text: "kohnlehome",
-                            clicks: 0
-                        }, {
-                            href: "https://meisterk.github.io/linkverwaltung/",
-                            text: "meisterk -> Linkverwaltung",
-                            clicks: 0
-                        }, {
-                            href: "https://www.google.de",
-                            text: "Google",
-                            clicks: 0
-                        }, {
-                            href: "https://stackoverflow.com/",
-                            text: "stackoverflow",
-                            clicks: 0
-                        }, {
-                            href: "https://www.youtube.com/c/DailyDoseOfInternet",
-                            text: "DailyDoseOfInternet",
-                            clicks: 0
-                        }
-                    ],
-                    newlinkhref: "",
-                    newlinktext: ""
+            const Linkverwaltung = {
+                data() {
+                    return {
+                        links: [
+                            {
+                                href: "http://www.kohnlehome.de",
+                                text: "kohnlehome",
+                                clicks: 0
+                            }, {
+                                href: "https://meisterk.github.io/linkverwaltung/",
+                                text: "meisterk -> Linkverwaltung",
+                                clicks: 0
+                            }, {
+                                href: "https://www.google.de",
+                                text: "Google",
+                                clicks: 0
+                            }, {
+                                href: "https://stackoverflow.com/",
+                                text: "stackoverflow",
+                                clicks: 0
+                            }, {
+                                href: "https://www.youtube.com/c/DailyDoseOfInternet",
+                                text: "DailyDoseOfInternet",
+                                clicks: 0
+                            }
+                        ],
+                        newlinkhref: "",
+                        newlinktext: ""
+                    }
                 },
                 methods: {
                     addclick: function(e) {
                         e.stopPropagation();
-                        linkhref = e.target.previousSibling.previousSibling.attributes.href.value;
+                        linkhref = e.originalTarget.previousSibling.attributes.href.value;
                         clickedlink = this.links.find(link => link.href === linkhref);
                         clickedlink.clicks++;
                         this.sortieren();
@@ -115,7 +116,8 @@
                 mounted() {
                     this.sortieren();
                 }
-            });
+            };
+            Vue.createApp(Linkverwaltung).mount('#linkverwaltung');
         </script>
     </body>
 </html>
