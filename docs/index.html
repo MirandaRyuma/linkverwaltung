@@ -30,8 +30,8 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center" v-for="link in links">
                         <a :href="link.href" target="_blank"
                             class="font-weight-light text-decoration-none">{{ link.text }}</a>
-                        <button class="btn badge badge-primary badge-pill" @click="addclick">{{ link.clicks }}</button>
-                        <i class="lni lni-trash"></i>
+                        <button class="btn badge badge-primary badge-pill" @click="addclick(link.id)">{{ link.clicks }}</button>
+                        <i class="lni lni-trash" @click="deletelink(link.id)"></i>
                     </li>
                 </ul>
             </div>
@@ -64,22 +64,27 @@
                     return {
                         links: [
                             {
+                                id: 0,
                                 href: "http://www.kohnlehome.de",
                                 text: "kohnlehome",
                                 clicks: 0
                             }, {
+                                id: 1,
                                 href: "https://meisterk.github.io/linkverwaltung/",
                                 text: "meisterk -> Linkverwaltung",
                                 clicks: 0
                             }, {
+                                id: 2,
                                 href: "https://www.google.de",
                                 text: "Google",
                                 clicks: 0
                             }, {
+                                id: 3,
                                 href: "https://stackoverflow.com/",
                                 text: "stackoverflow",
                                 clicks: 0
                             }, {
+                                id: 4,
                                 href: "https://www.youtube.com/c/DailyDoseOfInternet",
                                 text: "DailyDoseOfInternet",
                                 clicks: 0
@@ -90,10 +95,8 @@
                     }
                 },
                 methods: {
-                    addclick: function(e) {
-                        e.stopPropagation();
-                        linkhref = e.originalTarget.previousSibling.attributes.href.value;
-                        clickedlink = this.links.find(link => link.href === linkhref);
+                    addclick: function(id) {
+                        clickedlink = this.links.find(link => link.id === id);
                         clickedlink.clicks++;
                         this.sortieren();
                     },
@@ -108,16 +111,15 @@
                         if(this.newlinkhref === '' || this.newlinktext === '')
                             return alert("Beides muss gesetzt sein!");
                         let newlink = {
+                            id: this.links.length,
                             href: this.newlinkhref,
                             text: this.newlinktext,
                             clicks: 0
                         };
                         this.links.push(newlink);
                     },
-                    deletelink: function(e) {
-                        e.stopPropagation();
-                        linkhref = e.originalTarget.parentElement.previousSibling.previousSibling.attributes.href.value;
-                        clickedlink = this.links.find(link => link.href === linkhref);
+                    deletelink: function(id) {
+                        clickedlink = this.links.find(link => link.id === id);
                         let index = this.links.indexOf(clickedlink);
                         this.links.splice(index, 1);
                     }
