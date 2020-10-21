@@ -119,8 +119,7 @@
                         this.links.push(newlink);
                     },
                     deletelink: function(id) {
-                        clickedlink = this.links.find(link => link.id === id);
-                        let index = this.links.indexOf(clickedlink);
+                        let index = this.links.findIndex(link => link.id === id);
                         this.links.splice(index, 1);
                     }
                 },
