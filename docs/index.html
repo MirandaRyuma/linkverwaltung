@@ -99,6 +99,7 @@
                         clickedlink = this.links.find(link => link.id === id);
                         clickedlink.clicks++;
                         this.sortieren();
+                        this.saveInLocalStorage();
                     },
                     sortieren: function() {
                         this.links.sort(
@@ -117,13 +118,26 @@
                             clicks: 0
                         };
                         this.links.push(newlink);
+                        this.saveInLocalStorage();
                     },
                     deletelink: function(id) {
                         let index = this.links.findIndex(link => link.id === id);
                         this.links.splice(index, 1);
+                        this.saveInLocalStorage();
+                    },
+                    saveInLocalStorage: function() {
+                        let linksString = JSON.stringify(this.links);
+                        localStorage.setItem('links', linksString);
+                    },
+                    loadContent: function() {
+                        if(localStorage.getItem('links')) {
+                            let linksString = localStorage.getItem('links');
+                            this.links = JSON.parse(linksString);
+                        }
                     }
                 },
                 mounted() {
+                    this.loadContent();
                     this.sortieren();
                 }
             };
