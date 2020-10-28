@@ -25,6 +25,8 @@
     <body>
         <div class="container" id="linkverwaltung">
             <h1 class="h1">Linkverwaltung</h1>
+            <div class="leeresdiv col-sm-6"></div>
+            <h2 class="h2">Die Liste der Links</h2>
             <div class="row">
                 <ul class="list-group col-sm-6">
                     <li class="list-group-item d-flex justify-content-between align-items-center" v-for="link in links">
@@ -37,7 +39,7 @@
             </div>
             <div class="leeresdiv col-sm-6"></div>
             <div>
-                <h3 class="h3">Hier kann ein neuer Link hinzugefügt werden.</h3>
+                <h2 class="h2">Hier kann ein neuer Link hinzugefügt werden.</h3>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <input type="text" name="text" v-model="newlinktext" placeholder="Text zum Anzeigen" class="form-control"/>
